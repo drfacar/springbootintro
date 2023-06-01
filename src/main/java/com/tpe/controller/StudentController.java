@@ -154,5 +154,17 @@ public class StudentController {
         logger.warn("----------------Welcome{}", request.getServletPath());
         return "Welcome to Student Controller";
     }
+    @GetMapping("/getStudentNumber")//http://localhost:8080/students/getStudentNumber
+
+    public String getStudentNumber(){
+        String  numberStudent = studentService.getStudentCount();
+        return "Total number of registered students : "+numberStudent;
+    }
+    @GetMapping("/getAllStudentsFromFunction")//http://localhost:8080/students/getAllStudentsFromFunction
+
+    public List<Student> getAllStudentsFromFunction(){
+        List<Student> student = studentService.retriveAllStudents();
+        return student;
+    }
 
 }

@@ -4,6 +4,7 @@ import com.tpe.domain.Student;
 import com.tpe.dto.StudentDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -39,5 +40,13 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("SELECT new com.tpe.dto.StudentDTO(std.name, std.lastName) FROM Student std WHERE std.id=:id")
     Optional<StudentDTO> findStudentDTOByIdNameAndLastName(@Param("id") Long id);
 
+
+    // this annotation is used to map a repository method to a store procedure int underlying database
+    @Procedure(procedureName = "getCount")
+    String getStudentCount();
+
+
+    @Procedure(procedureName = "get_all_students")
+    List<Student> get_all_students();
 
 }

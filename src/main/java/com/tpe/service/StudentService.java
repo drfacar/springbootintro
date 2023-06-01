@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -102,6 +103,15 @@ public class StudentService {
     }
 
 
+    public String getStudentCount() {
+        return studentRepository.getStudentCount();
+    }
+
+    //@Transactional annotation is used in Spring to define the transactional behavior of a method or a class
+    @Transactional(readOnly = true)
+    public List<Student> retriveAllStudents() {
+        return studentRepository.get_all_students();
+    }
 
 }
 
