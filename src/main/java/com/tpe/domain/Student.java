@@ -22,7 +22,7 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE) //this field cannot be set
+    //@Setter(AccessLevel.NONE) //this field cannot be set
     private Long id;
 
     @NotNull(message = "first cannot be null")
